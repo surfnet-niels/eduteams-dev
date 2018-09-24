@@ -1,7 +1,7 @@
 #! /bin/bash
 IMAGE_TAG=eduteams/teip:v1
 
-# Steup the netwerk if needed
+# Setup the netwerk if needed
 if [ ! "$(docker network ls | grep eduteams.local)" ]; then
   echo "Creating eduteams.local network ..."
   ../dockernet.sh
@@ -26,15 +26,15 @@ docker run -it \
 	-v $PWD/workdir:/opt/workdir \
 	-e DATA_DIR=/var/eduteams \
 	-w /var/eduteams \
+	-v $PWD/debian:/home/debian \
 	$IMAGE_TAG
-	
 
-        #--add-host=rp.eduteams.local:10.128.128.100 \
+
+    #--add-host=rp.eduteams.local:10.128.128.100 \
 	#--add-host=idp.eduteams.local:10.128.128.200 \
 
 	#-v $CONFIG_DIR/production:/var/eduteams \
 	#-v $CONFIG_DIR/cdb:/etc/cdb \
-	#-v $PWD/workdir:/opt/workdir \
 	#-e DATA_DIR=/var/eduteams \
 	#-w /var/eduteams \
 
