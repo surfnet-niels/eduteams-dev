@@ -1,4 +1,3 @@
-172.172.172.1   svs.inacademia.local
-172.172.172.2   op.inacademia.local
-172.172.172.100 rp.inacademia.local                  
-172.172.172.200  idp.inacademia.local
+192.168.56.3    welcome.ls-aai.eduteams.local
+192.168.56.3    cm.welcome.ls-aai.eduteams.local
+192.168.57.3    idp.eduteams.local sp.eduteams.local
