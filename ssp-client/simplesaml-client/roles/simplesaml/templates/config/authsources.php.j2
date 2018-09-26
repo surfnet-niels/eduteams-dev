@@ -1,0 +1,46 @@
+<?php
+
+$presetIdp = NULL;
+$metadata = array();
+
+// If there is only one IdP (Like only this environments EngineBlock)
+require_once __DIR__ . "/../metadata/saml20-idp-remote.php";
+if (!empty($metadata) && count($metadata) === 1) {
+    $metadataIdps = array_keys($metadata);
+    $presetIdp = array_shift($metadataIdps);
+}
+
+$fname = realpath("{{ ssp_well_known_logins }}");
+$well_known_logins=array();
+if(file_exists($fname) && is_readable($fname) && strncmp($fname, "{{ ssp_dir }}", strlen("{{ ssp_dir }}")) == 0) {
+    $well_known_logins = json_decode ( file_get_contents($fname), true);
+    if(!is_array($well_known_logins)) {
+        $well_known_logins = array();
+    }
+}
+
+$config = array(
+    // This is a authentication source which handles admin authentication.
+    'admin' => array(
+        // The default is to use core:AdminPassword, but it can be replaced with
+        // any authentication source.
+
+        'core:AdminPassword',
+    ),
+   'example-userpass' => $well_known_logins,
+    'default-sp' => array(
+        'saml:SP',
+
+        // The entity ID of this SP.
+        // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
+        'entityID' => NULL,
+
+        // The entity ID of the IdP this should SP should contact.
+        // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
+        'idp' => NULL,
+
+        // The URL to the discovery service.
+        // Can be NULL/unset, in which case a builtin discovery service will be used.
+        'discoURL' => NULL
+    ),
+);

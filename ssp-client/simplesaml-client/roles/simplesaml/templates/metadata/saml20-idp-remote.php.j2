@@ -1,0 +1,107 @@
+<?php
+/**
+ * SAML 2.0 remote IdP metadata for SimpleSAMLphp.
+ *
+ * Remember to remove the IdPs you don't use from this file.
+ *
+ * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-remote
+ */
+
+$metadata['https://welcome.ls-aai.eduteams.local/proxy'] = array (
+  'entityid' => 'https://welcome.ls-aai.eduteams.local/proxy',
+  'description' =>
+  array (
+    'en' => 'LifeScienceID AAI Service',
+  ),
+  'OrganizationName' =>
+  array (
+    'en' => 'LifeScienceID AAI Service',
+  ),
+  'name' =>
+  array (
+    'en' => 'LifeScienceID AAI Service',
+  ),
+  'OrganizationDisplayName' =>
+  array (
+    'en' => 'LifeScienceID AAI Service',
+  ),
+  'url' =>
+  array (
+    'en' => 'http://www.corbel-project.eu/home.html',
+  ),
+  'OrganizationURL' =>
+  array (
+    'en' => 'http://www.corbel-project.eu/home.html',
+  ),
+  'contacts' =>
+  array (
+    0 =>
+    array (
+      'contactType' => 'technical',
+      'givenName' => 'LifeScienceID AAI Service',
+      'emailAddress' =>
+      array (
+        0 => 'mailto:support@eduteams.local',
+      ),
+    ),
+    1 =>
+    array (
+      'contactType' => 'administrative',
+      'givenName' => 'LifeScienceID AAI Service',
+      'emailAddress' =>
+      array (
+        0 => 'mailto:admin@eduteams.local',
+      ),
+    ),
+    2 =>
+    array (
+      'contactType' => 'support',
+      'givenName' => 'LifeScienceID AAI Service',
+      'emailAddress' =>
+      array (
+        0 => 'mailto:support@eduteams.local',
+      ),
+    ),
+  ),
+  'metadata-set' => 'saml20-idp-remote',
+  'SingleSignOnService' =>
+  array (
+    0 =>
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
+      'Location' => 'https://welcome.ls-aai.eduteams.local/saml2sp/sso/redirect',
+    ),
+    1 =>
+    array (
+      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+      'Location' => 'https://welcome.ls-aai.eduteams.local/saml2sp/sso/post',
+    ),
+  ),
+  'SingleLogoutService' =>
+  array (
+  ),
+  'ArtifactResolutionService' =>
+  array (
+  ),
+  'NameIDFormats' =>
+  array (
+    0 => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+    1 => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+  ),
+  'keys' =>
+  array (
+    0 =>
+    array (
+      'encryption' => false,
+      'signing' => true,
+      'type' => 'X509Certificate',
+      'X509Certificate' => '
+MIIFCjCCAvKgAwIBAgIJAMVXiyra6et8MA0GCSqGSIb3DQEBCwUAMBoxGDAWBgNV BAMMD2RvY2tlciBmcm9udGVuZDAeFw0xODA5MjQxMjIxNTNaFw0yODA5MjExMjIx NTNaMBoxGDAWBgNVBAMMD2RvY2tlciBmcm9udGVuZDCCAiIwDQYJKoZIhvcNAQEB BQADggIPADCCAgoCggIBAMbcbrVyRRCYCbbVd88JJM1EUsy3CziRyZhhZFJU/LPs K5C7mRoLdBGTl3WL7vdwMWySccz+0tjxALxs7vpAKODoQfU05CfpcSo+M0MCOURG SGS/HXB1GQMqGQObm+7pfF6cLAMSL5tr+CT9gSzRvZuUYzMcc6kBOaxeZkX7JWKa FOp5na1gvhBEOQvgM3OHink80PxEVLrdxWerVfM0BfS8dEnNpxdx5W6h58GHngqB P0WuQYQLusL2Se0bC1XKMTw7Iy72YAT7DqoLSWducYfs0uh9iIbOp+4mCdii7bjm LmxDXMnPj8gyCtSh5dRn9qSYSSBq4392C6n/KmpW6xdpWLE7jYRtea+uWb5zkTa8 ImoVnhKQwNd/bZV7a4e9c9PnHSEqRG267n6U8YtitCb1TW/D7/wPlqqPTtC9G0BH tr6BAjMKvU/jkeeUnPV9p3R6/zxRhU0k9Y3+x6V63W6CU+aoQ+wVNg3DhifT+1vQ EBI3NnreS3SYmJ1uJ8bRCSEnhoTrhMRNOhwdKdrNvxBfdpmRMZs60oxtIOozZkxn uCEsW3kWnuxOoDpu8mvVKFeCpDwmoEBV4eMemMBw4hJPKv1eB9kmXE116IYS09BR UwxSdLD+sjqDCnBuSUhfEBiMGYV5Y2e+Q17XHLbIoyomkseUJeBYTOlxf4Rur0Rp AgMBAAGjUzBRMB0GA1UdDgQWBBSDQ6pmN2ASviX+HrsIFA7iBQK8KjAfBgNVHSME GDAWgBSDQ6pmN2ASviX+HrsIFA7iBQK8KjAPBgNVHRMBAf8EBTADAQH/MA0GCSqG SIb3DQEBCwUAA4ICAQBBK85qYWWvI6GgU3fRDLujlxKiJXiNPjVj0qC5yVSNM5U3 qcmFA2MEDBsO/D337rQsXwvwVZmBhZG+12Hw0yzurOZiOTFpkR9bSXJ+hUWgSLMY 1jawQDkM+2oWm2/y1nhR4E/SjuCeWrL7IDE+POgg+Eey2XeL65HcFnj5i1H8o5MY ZXbdLw/2lg4bFhLvCbe/v5mqnk4g1TOREXbE4b7RXOxVWmby949J5LykWcoYqKTy ak/PnqheK6ieK14W5nRvHGc5KzKgBK4ScPNuzbCf+oydbWD4XavlQo4md99NQ6g+ irij2wD5CpMtOxAlIUrdyQ5o1Z542Kn3pQ6S1cSnISRM2QXcbAj8DN07KJEscZCz OxbI84RCDuTvSriRCAv75SuEq2ICsdCbQ5dGbwLmY1W3jWnfyKUKvOz2R1Wh8Vy0 yaHZD2TBS78YDYZIFxy4zn14E4NKpMxUIN/GwwJDCnurdZi6WPQX9MkxAzcuklmN K0ldGd66tZHvIR5ihH9/2zQyWYeT8he02a2rHTpSNqDBiZoaCjub5uMTAtjeo0F8 SgKPpsHCSeVfaklhshnZUU4LBG/C4Jx9An/R6lUe3+fiGy+ySQWqLb3Gk0/u/bvx 1zHRRjo/z5UQyfON9LyGbhuTAIkx2YdksTW1+zvW6F4FWFVUad9OUR++52p0Ew==
+',
+    ),
+  ),
+  'scope' =>
+  array (
+    0 => 'ls-aai.eduteams.local',
+  ),
+);
