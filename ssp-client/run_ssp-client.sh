@@ -1,7 +1,7 @@
 #! /bin/bash
 IMAGE_TAG=eduteams/ssp-client:v1
 
-Setup the netwerk if needed
+# Setup the netwerk if needed
 if [ ! "$(docker network ls | grep eduteams.local)" ]; then
   echo "Creating eduteams.local network ..."
   ./dockernet.sh
