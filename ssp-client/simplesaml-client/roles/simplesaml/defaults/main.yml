@@ -1,6 +1,6 @@
 # Default values for SimpleSamlPHP installation
 ssp_hostname: www.example.org
-ssp_version: 1.14.12
+ssp_version: 1.16.1
 ssp_download_base_url: "https://github.com/simplesamlphp/simplesamlphp/releases/download/v{{ ssp_version }}"
 ssp_tar_file: simplesamlphp-{{ ssp_version }}.tar.gz
 ssp_tar_location: /tmp/{{ ssp_tar_file }}
