@@ -41,6 +41,22 @@ $config = array(
 
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
-        'discoURL' => NULL
+        'discoURL' => NULL,
+
+        'UIInfo' => array(
+            'DisplayName' => array(
+                'en' => 'eduTeams Local SP'
+             ),
+            'Description' => array(
+                'en' => 'eduTeams Local SP description'
+             ),
+            'Logo' => array(
+                array(
+                        'url' => 'https://sp.eduteams.local/resources/icons/ssplogo-fish-small.png',
+                        'width' => '60',
+                        'height' => '41'
+                    ),
+            ),
+        ),
     ),
 );
