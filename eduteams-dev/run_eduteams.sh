@@ -20,6 +20,7 @@ CONFIG_DIR="$RUN_DIR/config"
 
 # Start SVS
 docker run -it \
+    --name eduteams_teip \
 	--net eduteams.local \
 	--hostname proxy.eduteams.local \
         --ip 172.128.128.10 \
