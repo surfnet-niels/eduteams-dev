@@ -23,12 +23,12 @@ docker run -it \
 	--net eduteams.local \
 	--hostname proxy.eduteams.local \
         --ip 172.128.128.10 \
-	-v $PWD/workdir:/opt/workdir \
 	-e DATA_DIR=/var/eduteams \
 	-w /var/eduteams \
-	-v $PWD/debian:/home/debian \
 	$IMAGE_TAG
 
+	#-v $PWD/debian:/home/debian \
+	#-v $PWD/workdir:/opt/workdir \
 
     #--add-host=rp.eduteams.local:10.128.128.100 \
 	#--add-host=idp.eduteams.local:10.128.128.200 \

@@ -1,13 +1,12 @@
 #! /bin/bash
-
 IMAGE_TAG=eduteams/teip:v1
 
 # create workdir
-if ! [ -f debian/.ssh/authorized_keys ]; then
-    mkdir -p debian/.ssh
-    cp ~/.ssh/id_rsa.pub debian/.ssh/authorized_keys
-    chmod 700 debian/.ssh
-fi
+#if ! [ -f debian/.ssh/authorized_keys ]; then
+#    mkdir -p debian/.ssh
+#    cp ~/.ssh/id_rsa.pub debian/.ssh/authorized_keys
+#    chmod 700 debian/.ssh
+#fi
 
 # As the build command is being called, we assume we need to build a new image.
 # To be sure we therefor first remove existign ones
