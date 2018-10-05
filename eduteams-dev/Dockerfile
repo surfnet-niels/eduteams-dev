@@ -19,6 +19,6 @@ RUN git clone -b feature-docker-deploy git@dev.niif.hu:vopaas/TEIP-deploy.git /v
 RUN echo "foobar" > /var/eduteams/TEIP-deploy/.docker_vault_pass
 RUN cd /var/eduteams/TEIP-deploy && ./docker-deploy.sh
 
-ENTRYPOINT /bin/bash
+#ENTRYPOINT /bin/bash
 #ENTRYPOINT service ssh start && /bin/bash
-#ENTRYPOINT /home/debian/vopaas/bin/docker-run.sh && /bin/bash
+ENTRYPOINT /home/debian/vopaas/bin/docker-run.sh && /bin/bash

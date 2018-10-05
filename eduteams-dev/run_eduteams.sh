@@ -1,5 +1,6 @@
 #! /bin/bash
 IMAGE_TAG=eduteams/teip:v1
+CONTAINER_NAME=eduteams_teip
 
 # Setup the netwerk if needed
 if [ ! "$(docker network ls | grep eduteams.local)" ]; then
@@ -19,8 +20,8 @@ RUN_DIR=$PWD
 CONFIG_DIR="$RUN_DIR/config"
 
 # Start SVS
-docker run -it \
-    --name eduteams_teip \
+docker start -i $CONTAINER_NAME || docker run -it \
+    --name $CONTAINER_NAME \
 	--net eduteams.local \
 	--hostname proxy.eduteams.local \
         --ip 172.128.128.10 \
