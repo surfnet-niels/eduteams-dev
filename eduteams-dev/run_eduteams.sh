@@ -1,6 +1,6 @@
 #! /bin/bash
 IMAGE_TAG=eduteams/teip:v1
-CONTAINER_NAME=eduteams_teip
+#CONTAINER_NAME=eduteams_teip
 
 # Setup the netwerk if needed
 if [ ! "$(docker network ls | grep eduteams.local)" ]; then
@@ -20,24 +20,12 @@ RUN_DIR=$PWD
 CONFIG_DIR="$RUN_DIR/config"
 
 # Start SVS
-docker start -i $CONTAINER_NAME || docker run -it \
-    --name $CONTAINER_NAME \
+docker run -it $IMAGE_TAG \
 	--net eduteams.local \
 	--hostname proxy.eduteams.local \
-        --ip 172.128.128.10 \
+        --ip 172.18.128.10 \
+        --add-host=idp.eduteams.local:172.18.128.100 \
+        --add-host=sp.eduteams.local:172.18.128.200 \
 	-e DATA_DIR=/var/eduteams \
 	-w /var/eduteams \
-	$IMAGE_TAG
-
-	#-v $PWD/debian:/home/debian \
-	#-v $PWD/workdir:/opt/workdir \
-
-    #--add-host=rp.eduteams.local:10.128.128.100 \
-	#--add-host=idp.eduteams.local:10.128.128.200 \
-
-	#-v $CONFIG_DIR/production:/var/eduteams \
-	#-v $CONFIG_DIR/cdb:/etc/cdb \
-	#-e DATA_DIR=/var/eduteams \
-	#-w /var/eduteams \
-
 

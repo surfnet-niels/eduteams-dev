@@ -18,11 +18,11 @@ fi
 
 # Start SSP IDP
 docker run \
-    --name eduteams_ssp \
 	--net eduteams.local \
-	--ip 192.168.57.3 \
-	--add-host=idp.eduteams.local:192.168.57.3 \
-	--add-host=sp.eduteams.local:192.168.57.3 \
+        --ip 172.18.128.100 \
+	--ip 172.18.128.200 \
+	--add-host=idp.eduteams.local:172.18.128.100 \
+	--add-host=sp.eduteams.local:172.18.128.200 \
 	--hostname client.inacademia.local \
 	--expose 80 \
 	--expose 443 \

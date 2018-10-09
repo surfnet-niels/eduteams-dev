@@ -1,4 +1,4 @@
-192.168.56.3    welcome.ls-aai.eduteams.local
-192.168.56.3    cm.welcome.ls-aai.eduteams.local
-192.168.57.3    idp.eduteams.local
-192.168.57.3    sp.eduteams.local
+172.18.128.10  proxy.eduteams.local
+172.18.128.10  cm.proxy.eduteams.local
+172.18.128.100 idp.eduteams.local
+172.18.128.200 sp.eduteams.local

@@ -25,7 +25,7 @@ ssp_managingcontact_name: Manager
 ssp_managingcontact_email: webmaster@{{ idp_hostname }}
 #spp_sp_metadata: "{{ sp_hostname }}/authentication/sp/metadata"
 #spp_sp_consumer: "{{ sp_hostname }}/authentication/sp/consume-assertion"
-ssp_title_suffix: INACADEMIA.LOCAL
+ssp_title_suffix: EDUTEAMS.LOCAL
 
 ssl_idp_hostname: "{{ idp_hostname }}"
 ssl_sp_hostname: "{{ sp_hostname }}"

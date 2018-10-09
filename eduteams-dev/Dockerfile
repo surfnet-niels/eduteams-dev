@@ -17,8 +17,10 @@ COPY config/sshconfig /root/.ssh/config
 RUN echo "debian ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN git clone -b feature-docker-deploy git@dev.niif.hu:vopaas/TEIP-deploy.git /var/eduteams/TEIP-deploy
 RUN echo "foobar" > /var/eduteams/TEIP-deploy/.docker_vault_pass
+COPY ansible/inventory/docker.yml /var/eduteams/TEIP-deploy/inventory/docker.yml
+COPY ansible/group_vars/vars.yml /var/eduteams/TEIP-deploy/group_vars/docker/vars.yml
 RUN cd /var/eduteams/TEIP-deploy && ./docker-deploy.sh
 
-#ENTRYPOINT /bin/bash
+ENTRYPOINT /bin/bash
 #ENTRYPOINT service ssh start && /bin/bash
-ENTRYPOINT /home/debian/vopaas/bin/docker-run.sh && /bin/bash
+#ENTRYPOINT /home/debian/vopaas/bin/docker-run.sh && /bin/bash
