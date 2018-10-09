@@ -1,0 +1,486 @@
+    # v 1.0 
+    ##########################################################################################################
+    # Repositories and versions
+    ##########################################################################################################
+
+    # Repository URL of the vopaas git repo
+    vopaas_repo_url: "https://dev.niif.hu/vopaas/TEIP.git"
+    # version tag for vopaas
+    vopaas_repo_version: ""
+    # Repository URL of the SATOSA git repo
+    satosa_repo_url: "https://github.com/sunet/SATOSA"
+    # version tag for SATOSA git repo
+    satosa_repo_version: ""
+    # Repository URL of the consent service git repo
+    cm_repo_url: "https://dev.niif.hu/vopaas/TEIP-CMservice.git"
+    # version tag for consent service git repo
+    cm_repo_version: ""
+    # Repository URL of the account linking service git repo
+    al_repo_url: "https://dev.niif.hu/vopaas/TEIP-ALservice.git"
+    # version tag for account linking service git repo
+    al_repo_version: ""
+    # Repository URL of the statistics service git repo
+    statistics_repo_url: "https://github.com/its-dirg/vopaas_statistics"
+    # version tag for statistics service git repo
+    statistics_repo_version: "v1.0.0"
+    # Repository URL of the pysaml2 git repo
+    pysaml2_repo_url: "https://github.com/rohe/pysaml2"
+    # version tag or commit for pysaml2 git repo
+    pysaml2_repo_version: "232696285745f19f1d828519e34ec66427ad72a4"
+    ##########################################################################################################
+    # Platform, file locations and directories
+    ##########################################################################################################
+
+    platform: "docker"
+
+    # The vopaas proxy installation folder
+    installation_dir: "{{ home.stdout }}/vopaas"
+    # Where to save the python virtual environ
+    vopaas_env: "{{ installation_dir }}/virtualenv"
+    # Where the generated metadata should be placed
+    metadata_dir: "{{ installation_dir }}/metadata"
+    # Where the public metadata should be placed
+    public_metadata_dir: "/var/www/html/metadata/"
+    # Where shell scripts should be placed
+    scripts_dir: "{{ installation_dir }}/bin"
+    # Where log files should be placed
+    logs_dir: "{{ installation_dir }}/logs"
+    # Where public www  should be placed
+    www_dir: "/var/www/html"
+    # eduTEAMS directory
+    eduteams_dir: "/opt/eduTEAMS/"
+
+    ##########################################################################################################
+    # docker Community Registry config
+    ##########################################################################################################
+
+    docker_enabled: false
+
+    ##########################################################################################################
+    # eduTEAMS Community Registry config
+    ##########################################################################################################
+
+    ecr_enabled: false
+    ecr_docker_conf_dir: "/conf"
+    ecr_docker_image: ""
+    ecr_datastores:
+      ldap:
+        perun:
+          server: "test"
+          bind_dn: ""
+          bind_password: ""
+          search_base: ""
+          AA_fqdn: ""
+      mysql:
+        comanage:
+          host: ""
+          db: ""
+          user: ""
+          password: ""
+          AA_fqdn: ""
+        HEXAA:
+          host: ""
+          db: ""
+          user: ""
+          password: ""
+          AA_fqdn: ""
+    ecr_debug: True
+
+    ##########################################################################################################
+    # SATOSA config
+    ##########################################################################################################
+    # Proxy host
+    proxy_hostname: "127.0.0.1"
+    # Proxy port
+    proxy_port: "8080"
+    # Need to be global for when generating metadata
+    proxy_dir: "{{ installation_dir }}/proxy"
+
+    #Nginx config
+    nginx_hostname: "proxy.eduteams.local"
+    nginx_port: "443"
+
+    #Use Diffie-Hellman based certs in nginx?
+    use_dh: true
+
+    # Satosa the signing key
+    proxy_jwt_signing_key: "{{cert_dir}}/vopaas_proxy_jwt_sig.key"
+    proxy_jwt_signing_pub: "{{cert_dir}}/vopaas_proxy_jwt_sig.crt"
+
+    # The https key and cert for the public facing side of the proxy (in our case nginx)
+    # Note that the use of this key for gunicorn is depricated
+    proxy_server_cert: "{{ cert_dir }}/webserver.fullchain.crt"
+    proxy_server_key: "{{ cert_dir }}/webserver.key"
+
+    #Enable backup of database?
+    db_backup: false
+
+    #Dirty patch
+    dirty_fix_pyoidc: false
+
+    # Temporary patch for voPersonExternalAffiliation
+    patch_voperson_enabled: false
+    eduteams_uri: "https://eduteams.local/attribute-definition/"
+
+    # Deploy lsaai specific configuration?
+    # TODO: capture this in propes vars and roles!
+    lsaai: true
+
+    # The name of the cookie satosa uses to keep state
+    cookie_state_name: "VOPAAS_STATE"
+    # By default SATOSA deletes context state
+    context_state_delete: true
+
+    # Which backend plugins are enabled?
+    # possible values: saml2_backend, openid_backend, google_backend, fb_backend
+    backend_plugins_enabled:
+    #- google_backend
+    #- fb_backend
+    #- orcid_backend
+    #- linkedin_backend
+    #- github_backend
+    #- paypal_backend
+    #- mojeid_backend
+    - saml2_backend
+
+    # Which frontend plugins are enabled?
+    # possible values: saml2_frontend
+    frontend_plugins_enabled:
+    - saml2_frontend
+    #- oidc_frontend
+
+    # Number of workers (2 x $num_cores) + 1
+    gunicorn_workers: 1
+    # put in deamon mode?
+    gunicorn_deamonize: false
+
+    ##########################################################################################################
+    # Generic SAML plugin config
+    # Only relevent if either saml frontent or saml backend plugins are enabled
+    ##########################################################################################################
+    # IdP/SP Logo in the metadata needs a place to live
+    logos:
+    - width: 200
+      height: 200
+      text: "https://{{ nginx_hostname }}/logo.png"
+    - width: 16
+      height: 16
+      text: "https://{{ nginx_hostname }}/logo_small.png"
+
+    # Is the proxy running frontend only (so only one entity) or frontend-split (so all IdPs from the backend are mirrored in the frontend)
+    # Possible values:
+    # - frontend
+    # - frontend_split
+    proxy_mode: frontend
+
+    # Scope for scoped SAML attributes
+    saml_scope: "proxy.eduteams.local"
+
+    # Value of eduPersonScopedAffiliation to release to SAML SPs
+    epsa_value: "affiliate@{{ saml_scope }}"
+
+    ##########################################################################################################
+    # SAML frontend
+    # SAML2 frontend is connected TO SAML SPs!
+    ##########################################################################################################
+    # Where to put the SAML frontend signing key files
+    proxy_frontend_cert: "{{ cert_dir }}/saml_proxy_frontend.crt"
+    proxy_frontend_key: "{{ cert_dir }}/saml_proxy_frontend.key"
+
+    # SAML metadata related config
+    saml2sp_frontend:
+      organization:
+       display_name: LifeScienceID AAI Service
+       name: LifeScienceID AAI Service
+       url: http://www.corbel-project.eu/home.html
+       privacy_policy_url: none
+      contact_person:
+       technical:
+         email: "mailto:support@eduteams.local"
+         given_name: LifeScienceID AAI Service
+       support:
+         email: "mailto:support@eduteams.local"
+         given_name: LifeScienceID AAI Service
+       admin:
+         email: "mailto:admin@eduteams.local"
+         given_name: LifeScienceID AAI Service
+      metadata:
+          local:
+            - "{{ metadata_dir }}/ssp-sp.xml"
+
+    ##########################################################################################################
+    # SAML backend
+    # SAML2 backend is connected TO SAML IdPs!
+    ##########################################################################################################
+    # Where to put the SAML backend signing key files
+    proxy_backend_cert: "{{ cert_dir }}/saml_proxy_backend.crt"
+    proxy_backend_key: "{{ cert_dir }}/saml_proxy_backend.key"
+
+    # SAML metadata related config
+    saml2sp_backend:
+      organization:
+        display_name: LifeScienceID AAI Service
+        name: LifeScienceID AAI Service
+        url: http://www.corbel-project.eu/home.html
+        privacy_policy_url: none
+        description: The LifeScienceID AAI Service handles authentication and autorization on behalf of services provided by the CORBEL collaboration. CORBEL provides a platform for harmonised user access to biological and medical technologies, biological samples and data services required by cutting-edge biomedical research.
+      contact_person:
+        technical:
+          email: "mailto:support@eduteams.local"
+          given_name: LifeScienceID AAI Service
+        support:
+          email: "mailto:support@eduteams.local"
+          given_name: LifeScienceID AAI Service
+        admin:
+          email: "mailto:admin@eduteams.local"
+          given_name: LifeScienceID AAI Service
+      metadata:
+          local:
+            - "{{ metadata_dir }}/ssp-idp.xml"
+      # https://github.com/IdentityPython/pysaml2/blob/master/doc/howto/config.rst#want-response-signed
+      # https://trello.com/c/pFxDxmfC/8-signature-verification-does-not-work-in-satosa
+      want_response_signed: false
+      remember_selected_idp_from_disco: false
+      use_disco_when_forceauthn: false
+      mirror_saml_forceauthn: false
+      # Config optional and requred attributes for SAML frontend
+      attributes:
+        r_and_s: true
+        required:
+        - eduPersonPrincipalName
+        optional:
+        - eduPersonTargetedID
+        - cn
+        - displayName
+        - eduPersonScopedAffiliation
+        - sn
+        - givenName
+        - mail
+        - eduPersonOrcid
+
+    ##########################################################################################################
+    # OIDC frontend
+    # OIDC frontend is connected TO OIDC RPs
+    ##########################################################################################################
+    oidc_frontend:
+      generate_local_cdb: true
+      proxy_jwt_signing_key: "{{cert_dir}}/vopaas_proxy_jwt_sig.key"
+      proxy_jwt_signing_pub: "{{cert_dir}}/vopaas_proxy_jwt_sig.crt"
+      client_registration_supported: "No"
+      client_db_path: "{{ installation_dir }}/cdb.json"
+      clients:
+        client_1:
+          client_id: "{{ secrets.oidc_clients['client_1'].client_id }}"
+          client_secret: "{{ secrets.oidc_clients['client_1'].client_secret }}"
+          response_types:
+          - "code"
+          redirect_uris:
+          - http://127.0.0.1:5000/oidc_callback
+      #response_types_supported:
+      #subject_types_supported:
+
+
+    ##########################################################################################################
+    # Common microservcies can be enabeld here and their config tuned.
+    ##########################################################################################################
+    #Enable account linking microservice?
+    al_enable: false
+    #Enable Consent management microservice?
+    cm_enable: true
+    # Static attributes micro_service
+    static_attributes_enable: true
+    # Attribute processor micro_service
+    attribute_processor_enable: true
+    # R&S LOA injector
+    inject_attribute_for_rs_idps_enable: false
+    # LDAP Attribute Store
+    ldap_attribute_store_enable: false
+    # eduTEAMS Attribute Store
+    eduteams_attribute_store_enable: false
+    # Perun Attribute Store
+    perun_attribute_store_enable: false
+    # LS AAI ID Generator
+    lsaai_id_generator_enable: false
+    # LS AAI Copy From Attribute To Attribute
+    lsaai_from_attr_to_attr_enable: false
+    # AARC Group Role Processor (implements AARC-G002)
+    aarc_group_role_processor_enable: false
+    # Static Attribute Policy Engine
+    static_attributes_policy_engine_enable: false
+
+    ##########################################################################################################
+    # Consent service config
+    ##########################################################################################################
+    cm_service_dir: "{{ installation_dir }}/modules/cm"
+    # External hostname for service
+    cm_service_hostname: "cm.{{ nginx_hostname }}"
+    # Where does the service run?
+    cm_hostname: "127.0.0.1"
+    # Consent service port
+    cm_port: "8081"
+    # Enable debugging for cm module?
+    cm_debug: False
+
+    ##########################################################################################################
+    # Account linking service config
+    ##########################################################################################################
+    # Account linking service host
+    al_service_dir: "{{ installation_dir }}/modules/al"
+    # External hostname for service
+    al_service_hostname: "al.{{ nginx_hostname }}"
+    # Where does the service run?
+    al_hostname: "127.0.0.1"
+    # Account linking service port
+    al_port: "8082"
+    # Enable debugging for al module?
+    al_debug: False
+
+    ##########################################################################################################
+    # Inject attribues for R&S IdPs config microservice
+    ##########################################################################################################
+    iai_mdq_url:  https://mdx.pilot.lifescienceid.org
+    iai_attribute_name: epa
+    iai_attribute_value: urn:geant:lifescienceid.org:rs-sirtfi
+    iai_whitelist_idp: ""
+    iai_attribute_value_to_search:
+      - http://refeds.org/category/research-and-scholarship
+      - https://refeds.org/sirtfi
+
+    ##########################################################################################################
+    # Statistics service config
+    ##########################################################################################################
+    vopaas_stats_key: "{{ cert_dir }}/vopaas_stats.key"
+    vopaas_stats_pub_key: "{{ cert_dir }}/vopaas_stats.pub"
+
+    # LS AAI ID Generator config
+    ##########################################################################################################
+
+    laig_id_attribute: spuc
+    laig_saml_scope: lifescienceid.org
+    laig_hash_salt: "{{ secrets.user_id_hash_salt }}"
+    laig_from_attrs: "[nameid, edupersontargetedid, edupersonuniqueid, eppn, givenname, surname, mail, displayname, epsa, edupersonorcid]"
+
+    ##########################################################################################################
+    # ID Generator config
+    ##########################################################################################################
+
+    ig_id_attribute: spuc
+    ig_saml_scope:
+    ig_hash_salt: "{{ secrets.user_id_hash_salt }}"
+    ig_from_attrs: ""
+
+    ##########################################################################################################
+    # LS AAI From Attr To Attr
+    ##########################################################################################################
+    lafata_config:
+      from_attr_to_attr: []
+      "https://test-sp.admin.skanct.com/simplesaml/module.php/saml/sp/metadata.php/default-sp":
+        from_attr_to_attr:
+          - [edupersonuniqueid, edupersontargetedid]
+          - [epsa, epe]
+
+    ##########################################################################################################
+    # ldap_attribute_store config
+    ##########################################################################################################
+    las_ldap_url: ""
+    las_search_base: ""
+    las_attribute_names: []
+    las_identifier_attribute: ""
+    las_clear_input_attributes_enable: false
+    las_redirect_url: ""
+    las_ignore_entity_ids: []
+
+    ##########################################################################################################
+    # eduteams_attribute_store config
+    ##########################################################################################################
+    eas_ldap_url: ""
+    eas_search_base: ""
+    eas_attribute_names_for_ldap_fitler: []
+    eas_ldap_search_identifier_attribute: ""
+    eas_clear_input_attributes_enable: false
+    eas_redirect_url: ""
+    eas_ignore_entity_ids: []
+    eas_urns_subnamespace: ""
+    eas_urn_subnamespace_exclude: ""
+    eas_group_attr: ""
+    eas_attribute_maps:
+    - ["sn", "surname"]
+    - ["sn", "surname"]
+    - ["givenName", "givenname"]
+    - ["mail", "mail"]
+    - ["groupNames", "ismemberof"]
+    eas_eppn_attr: ""
+    eas_add_eppn_scope: ""
+
+    ##########################################################################################################
+    # perun_attribute_store config
+    ##########################################################################################################
+    pas_ldap_url: ""
+    pas_search_base: ""
+    pas_attribute_names: []
+    pas_identifier_attribute: ""
+    pas_clear_input_attributes_enable: false
+    pas_redirect_url: ""
+    pas_ignore_entity_ids: []
+    pas_community_identifier_attribute: ""
+    pas_urns_subnamespace: ""
+    pas_urn_subnamespace_exclude: ""
+
+    ##########################################################################################################
+    # aarc_group_role_processor config
+    ##########################################################################################################
+    agrp_from_group_role_attribute: ""
+    agrp_to_group_role_attribute: ""
+    agrp_urn_namespace: ""
+    agrp_attribute_authority: ""
+
+    ##########################################################################################################
+    # hexaa_attribute_store config
+    ##########################################################################################################
+    has_db_host: ""
+    has_db_user: ""
+    has_db_name: ""
+    has_db_password: ""
+    has_db_query:
+      - "SELECT 'edupersonuniqueid', epuid FROM map WHERE spuc = %s OR '-' = %s"
+      - "SELECT a.attrName, a.attrValue FROM map AS m JOIN attrs AS a ON m.epuid = a.epuid AND m.spuc = %s AND a.spid = %s"
+    has_ignore_entity_ids: []
+    has_forced_sp_entity_id: ""
+    has_db_connect_timeout: ""
+    has_urns_subnamespace: ""
+    has_urn_subnamespace_exclude: ""
+    has_attribute_as_id: ""
+
+    ##########################################################################################################
+    # comanage_attribute_store config
+    ##########################################################################################################
+    cas_db_host: ""
+    cas_db_user: ""
+    cas_db_name: ""
+    cas_db_password: ""
+    cas_db_query:
+      - "SELECT attrName,value FROM attributeValuesView WHERE userNameId = %s AND spEntityId = %s"
+      - "SELECT 'edupersonentitlement',vo_name FROM membershipView WHERE u_identifier = %s AND entity_id = %s"
+    cas_ignore_entity_ids: []
+    cas_forced_sp_entity_id: ""
+    cas_db_connect_timeout: ""
+    cas_urns_subnamespace: ""
+    cas_urn_subnamespace_exclude: ""
+    cas_attribute_as_id: ""
+
+    ##########################################################################################################
+    # user_registration config
+    ##########################################################################################################
+    ur_found_in_mms_attr: ""
+    ur_redirect_url: ""
+
+    ##########################################################################################################
+    # static_attributes_policy_engine config
+    ##########################################################################################################
+
+    sape_config:
+      default:
+        static_attributes:
+          epsa:
+            - member@example.com
+
