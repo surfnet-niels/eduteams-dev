@@ -5,8 +5,8 @@
  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-sp-remote
  */
 
- $metadata['https://welcome.ls-aai.eduteams.local/metadata/backend.xml'] = array (
-  'entityid' => 'https://welcome.ls-aai.eduteams.local/metadata/backend.xml',
+$metadata['https://proxy.eduteams.local/metadata/backend.xml'] = array (
+  'entityid' => 'https://proxy.eduteams.local/metadata/backend.xml',
   'description' =>
   array (
   ),
@@ -66,7 +66,7 @@
     0 =>
     array (
       'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
-      'Location' => 'https://welcome.ls-aai.eduteams.local/saml2sp/acs/post',
+      'Location' => 'https://proxy.eduteams.local/saml2sp/acs/post',
       'index' => 1,
     ),
   ),
@@ -97,8 +97,33 @@
       'encryption' => false,
       'signing' => true,
       'type' => 'X509Certificate',
-      'X509Certificate' => '
-MIIFCDCCAvCgAwIBAgIJAMiNNKOK82bzMA0GCSqGSIb3DQEBCwUAMBkxFzAVBgNV BAMMDmRvY2tlciBiYWNrZW5kMB4XDTE4MDkyNDEyMjEyM1oXDTI4MDkyMTEyMjEy M1owGTEXMBUGA1UEAwwOZG9ja2VyIGJhY2tlbmQwggIiMA0GCSqGSIb3DQEBAQUA A4ICDwAwggIKAoICAQDD9QB/+57UkVzU736j4z1lflYC9rlJguscB7n5dDr3m6Kj J2G+j4g9jQznmzLfGsWPIcixTQnHoc0g3LYf71EuwzhfR9mGAtylNihwp+IK//M4 Pw7vZPBMjuZHQMz6wiiEnXEq2JIY94EXigv1x6w1uV9SaJMez06l172CL30L7IPQ YtLYURq3/pVUIK6BaBP6CDo4o0VQGPrWsjh7sxQBVnQwahE+8eeS+5TjD4ecPtMr kNWuArCYwR8/GDJoRZJwFcy+3+/AmiXraM0OXEu5BULLlgqo6+dsH8cDYn2r0SJV DTjFjYf7Df/Z1mM8ko14GQg8w8X+zQP/VRo9VmUQSJPC3pixd2uVie+OjxhEEeSe 1tbdO/grGZvSCGiID9c+eHNounOrUwyo9FlVRs9TFB26mcJi+mcCmFgc4ReZ5Ng8 5hypqe3ZXuIsDesIRW0eqKK3gsBgHsT/Txwy8ccExkuwqhZnkWjU1sE7k2tpsAhT PynEIviwZeqes7HmndeYRVY9Fw/lfyRIosCz8CWzx+4bdjSf3R1vKLMmcDFfvMqK KYI95x5IS+dBKUEsZ2VSU7EXdL6Yjdvqm6YFp1sRc1m9M4MAHQgeYLIOrxP0rmmO i8zuD/Z3jm6EfjB1bgn01rF/wrt/+yFJ4ADkUS+ZiTK8QXVfrzNPeO4OUwT4hwID AQABo1MwUTAdBgNVHQ4EFgQUsnTazWt+BnQMzkp49tqfe7ml4mcwHwYDVR0jBBgw FoAUsnTazWt+BnQMzkp49tqfe7ml4mcwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG 9w0BAQsFAAOCAgEAeCvOjsy/sS+KqaoK2O1KNYlDww0GwnSCxOLvU/1WVLq8bWRd Le0gTfgE0tvroS8PUC9WDDDXe74kopmEpc5ZoWBhCxFcnoX9x37LHmcysZB6Qyoe vvDcz//XKh/QqgJoOUGjJMSFSBwWlrWNb9v2xqTcXmkkK3ez7C+PZi3+F4Zytlnk R21XC7tNsCH4FC7k5WuxzblrgI78l+NRHeq7u1vDyG9FSlmDS9BIAaQ/eLQPVEKi Ld1hZR8MEqBdKb3vtTQs13iqde0biQ/ZvWfOrKjtUgurvGtLAeePhj3WDSEcIM0p oJfSiirF+1IepFAfxqvYB0OjOItXCJhBY1n9soNN7EKA1tav2+EB4crkdLEXHL0C pJAUEAeWN+5PUjbHUKOz2kUV5x6DPlUEP7kuE5e1PcKxhiDjpxwGFSoYZRdJ6zXn 2E6qAInOXr3LEHYXBR2dmuk4/SYP1pyTbErM/MVONclp2sSLEv7765L5eJsgoH6a ug5snyXMkjUz16+mchdosLNB32cvHIuROOWqB2089TysIztWAbZtBRDjxLr+PWgK 6q+1TGLYFOIBIr595OJ3lAY+HQ5WLu49mPH9BVI4uMUrGU7yIMg+tx86USkVmf+x sYDiqnaJa6hLSfWFApQ6zPCteEnrFxs5ofIVaKewVLtcVRoA9xM162VEMzU=
+      'X509Certificate' => 'MIIFCDCCAvCgAwIBAgIJAMiNNKOK82bzMA0GCSqGSIb3DQEBCwUAMBkxFzAVBgNV
+BAMMDmRvY2tlciBiYWNrZW5kMB4XDTE4MDkyNDEyMjEyM1oXDTI4MDkyMTEyMjEy
+M1owGTEXMBUGA1UEAwwOZG9ja2VyIGJhY2tlbmQwggIiMA0GCSqGSIb3DQEBAQUA
+A4ICDwAwggIKAoICAQDD9QB/+57UkVzU736j4z1lflYC9rlJguscB7n5dDr3m6Kj
+J2G+j4g9jQznmzLfGsWPIcixTQnHoc0g3LYf71EuwzhfR9mGAtylNihwp+IK//M4
+Pw7vZPBMjuZHQMz6wiiEnXEq2JIY94EXigv1x6w1uV9SaJMez06l172CL30L7IPQ
+YtLYURq3/pVUIK6BaBP6CDo4o0VQGPrWsjh7sxQBVnQwahE+8eeS+5TjD4ecPtMr
+kNWuArCYwR8/GDJoRZJwFcy+3+/AmiXraM0OXEu5BULLlgqo6+dsH8cDYn2r0SJV
+DTjFjYf7Df/Z1mM8ko14GQg8w8X+zQP/VRo9VmUQSJPC3pixd2uVie+OjxhEEeSe
+1tbdO/grGZvSCGiID9c+eHNounOrUwyo9FlVRs9TFB26mcJi+mcCmFgc4ReZ5Ng8
+5hypqe3ZXuIsDesIRW0eqKK3gsBgHsT/Txwy8ccExkuwqhZnkWjU1sE7k2tpsAhT
+PynEIviwZeqes7HmndeYRVY9Fw/lfyRIosCz8CWzx+4bdjSf3R1vKLMmcDFfvMqK
+KYI95x5IS+dBKUEsZ2VSU7EXdL6Yjdvqm6YFp1sRc1m9M4MAHQgeYLIOrxP0rmmO
+i8zuD/Z3jm6EfjB1bgn01rF/wrt/+yFJ4ADkUS+ZiTK8QXVfrzNPeO4OUwT4hwID
+AQABo1MwUTAdBgNVHQ4EFgQUsnTazWt+BnQMzkp49tqfe7ml4mcwHwYDVR0jBBgw
+FoAUsnTazWt+BnQMzkp49tqfe7ml4mcwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG
+9w0BAQsFAAOCAgEAeCvOjsy/sS+KqaoK2O1KNYlDww0GwnSCxOLvU/1WVLq8bWRd
+Le0gTfgE0tvroS8PUC9WDDDXe74kopmEpc5ZoWBhCxFcnoX9x37LHmcysZB6Qyoe
+vvDcz//XKh/QqgJoOUGjJMSFSBwWlrWNb9v2xqTcXmkkK3ez7C+PZi3+F4Zytlnk
+R21XC7tNsCH4FC7k5WuxzblrgI78l+NRHeq7u1vDyG9FSlmDS9BIAaQ/eLQPVEKi
+Ld1hZR8MEqBdKb3vtTQs13iqde0biQ/ZvWfOrKjtUgurvGtLAeePhj3WDSEcIM0p
+oJfSiirF+1IepFAfxqvYB0OjOItXCJhBY1n9soNN7EKA1tav2+EB4crkdLEXHL0C
+pJAUEAeWN+5PUjbHUKOz2kUV5x6DPlUEP7kuE5e1PcKxhiDjpxwGFSoYZRdJ6zXn
+2E6qAInOXr3LEHYXBR2dmuk4/SYP1pyTbErM/MVONclp2sSLEv7765L5eJsgoH6a
+ug5snyXMkjUz16+mchdosLNB32cvHIuROOWqB2089TysIztWAbZtBRDjxLr+PWgK
+6q+1TGLYFOIBIr595OJ3lAY+HQ5WLu49mPH9BVI4uMUrGU7yIMg+tx86USkVmf+x
+sYDiqnaJa6hLSfWFApQ6zPCteEnrFxs5ofIVaKewVLtcVRoA9xM162VEMzU=
 ',
     ),
     1 =>
@@ -106,8 +131,33 @@ MIIFCDCCAvCgAwIBAgIJAMiNNKOK82bzMA0GCSqGSIb3DQEBCwUAMBkxFzAVBgNV BAMMDmRvY2tlciB
       'encryption' => true,
       'signing' => false,
       'type' => 'X509Certificate',
-      'X509Certificate' => '
-MIIFCDCCAvCgAwIBAgIJAMiNNKOK82bzMA0GCSqGSIb3DQEBCwUAMBkxFzAVBgNV BAMMDmRvY2tlciBiYWNrZW5kMB4XDTE4MDkyNDEyMjEyM1oXDTI4MDkyMTEyMjEy M1owGTEXMBUGA1UEAwwOZG9ja2VyIGJhY2tlbmQwggIiMA0GCSqGSIb3DQEBAQUA A4ICDwAwggIKAoICAQDD9QB/+57UkVzU736j4z1lflYC9rlJguscB7n5dDr3m6Kj J2G+j4g9jQznmzLfGsWPIcixTQnHoc0g3LYf71EuwzhfR9mGAtylNihwp+IK//M4 Pw7vZPBMjuZHQMz6wiiEnXEq2JIY94EXigv1x6w1uV9SaJMez06l172CL30L7IPQ YtLYURq3/pVUIK6BaBP6CDo4o0VQGPrWsjh7sxQBVnQwahE+8eeS+5TjD4ecPtMr kNWuArCYwR8/GDJoRZJwFcy+3+/AmiXraM0OXEu5BULLlgqo6+dsH8cDYn2r0SJV DTjFjYf7Df/Z1mM8ko14GQg8w8X+zQP/VRo9VmUQSJPC3pixd2uVie+OjxhEEeSe 1tbdO/grGZvSCGiID9c+eHNounOrUwyo9FlVRs9TFB26mcJi+mcCmFgc4ReZ5Ng8 5hypqe3ZXuIsDesIRW0eqKK3gsBgHsT/Txwy8ccExkuwqhZnkWjU1sE7k2tpsAhT PynEIviwZeqes7HmndeYRVY9Fw/lfyRIosCz8CWzx+4bdjSf3R1vKLMmcDFfvMqK KYI95x5IS+dBKUEsZ2VSU7EXdL6Yjdvqm6YFp1sRc1m9M4MAHQgeYLIOrxP0rmmO i8zuD/Z3jm6EfjB1bgn01rF/wrt/+yFJ4ADkUS+ZiTK8QXVfrzNPeO4OUwT4hwID AQABo1MwUTAdBgNVHQ4EFgQUsnTazWt+BnQMzkp49tqfe7ml4mcwHwYDVR0jBBgw FoAUsnTazWt+BnQMzkp49tqfe7ml4mcwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG 9w0BAQsFAAOCAgEAeCvOjsy/sS+KqaoK2O1KNYlDww0GwnSCxOLvU/1WVLq8bWRd Le0gTfgE0tvroS8PUC9WDDDXe74kopmEpc5ZoWBhCxFcnoX9x37LHmcysZB6Qyoe vvDcz//XKh/QqgJoOUGjJMSFSBwWlrWNb9v2xqTcXmkkK3ez7C+PZi3+F4Zytlnk R21XC7tNsCH4FC7k5WuxzblrgI78l+NRHeq7u1vDyG9FSlmDS9BIAaQ/eLQPVEKi Ld1hZR8MEqBdKb3vtTQs13iqde0biQ/ZvWfOrKjtUgurvGtLAeePhj3WDSEcIM0p oJfSiirF+1IepFAfxqvYB0OjOItXCJhBY1n9soNN7EKA1tav2+EB4crkdLEXHL0C pJAUEAeWN+5PUjbHUKOz2kUV5x6DPlUEP7kuE5e1PcKxhiDjpxwGFSoYZRdJ6zXn 2E6qAInOXr3LEHYXBR2dmuk4/SYP1pyTbErM/MVONclp2sSLEv7765L5eJsgoH6a ug5snyXMkjUz16+mchdosLNB32cvHIuROOWqB2089TysIztWAbZtBRDjxLr+PWgK 6q+1TGLYFOIBIr595OJ3lAY+HQ5WLu49mPH9BVI4uMUrGU7yIMg+tx86USkVmf+x sYDiqnaJa6hLSfWFApQ6zPCteEnrFxs5ofIVaKewVLtcVRoA9xM162VEMzU=
+      'X509Certificate' => 'MIIFCDCCAvCgAwIBAgIJAMiNNKOK82bzMA0GCSqGSIb3DQEBCwUAMBkxFzAVBgNV
+BAMMDmRvY2tlciBiYWNrZW5kMB4XDTE4MDkyNDEyMjEyM1oXDTI4MDkyMTEyMjEy
+M1owGTEXMBUGA1UEAwwOZG9ja2VyIGJhY2tlbmQwggIiMA0GCSqGSIb3DQEBAQUA
+A4ICDwAwggIKAoICAQDD9QB/+57UkVzU736j4z1lflYC9rlJguscB7n5dDr3m6Kj
+J2G+j4g9jQznmzLfGsWPIcixTQnHoc0g3LYf71EuwzhfR9mGAtylNihwp+IK//M4
+Pw7vZPBMjuZHQMz6wiiEnXEq2JIY94EXigv1x6w1uV9SaJMez06l172CL30L7IPQ
+YtLYURq3/pVUIK6BaBP6CDo4o0VQGPrWsjh7sxQBVnQwahE+8eeS+5TjD4ecPtMr
+kNWuArCYwR8/GDJoRZJwFcy+3+/AmiXraM0OXEu5BULLlgqo6+dsH8cDYn2r0SJV
+DTjFjYf7Df/Z1mM8ko14GQg8w8X+zQP/VRo9VmUQSJPC3pixd2uVie+OjxhEEeSe
+1tbdO/grGZvSCGiID9c+eHNounOrUwyo9FlVRs9TFB26mcJi+mcCmFgc4ReZ5Ng8
+5hypqe3ZXuIsDesIRW0eqKK3gsBgHsT/Txwy8ccExkuwqhZnkWjU1sE7k2tpsAhT
+PynEIviwZeqes7HmndeYRVY9Fw/lfyRIosCz8CWzx+4bdjSf3R1vKLMmcDFfvMqK
+KYI95x5IS+dBKUEsZ2VSU7EXdL6Yjdvqm6YFp1sRc1m9M4MAHQgeYLIOrxP0rmmO
+i8zuD/Z3jm6EfjB1bgn01rF/wrt/+yFJ4ADkUS+ZiTK8QXVfrzNPeO4OUwT4hwID
+AQABo1MwUTAdBgNVHQ4EFgQUsnTazWt+BnQMzkp49tqfe7ml4mcwHwYDVR0jBBgw
+FoAUsnTazWt+BnQMzkp49tqfe7ml4mcwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG
+9w0BAQsFAAOCAgEAeCvOjsy/sS+KqaoK2O1KNYlDww0GwnSCxOLvU/1WVLq8bWRd
+Le0gTfgE0tvroS8PUC9WDDDXe74kopmEpc5ZoWBhCxFcnoX9x37LHmcysZB6Qyoe
+vvDcz//XKh/QqgJoOUGjJMSFSBwWlrWNb9v2xqTcXmkkK3ez7C+PZi3+F4Zytlnk
+R21XC7tNsCH4FC7k5WuxzblrgI78l+NRHeq7u1vDyG9FSlmDS9BIAaQ/eLQPVEKi
+Ld1hZR8MEqBdKb3vtTQs13iqde0biQ/ZvWfOrKjtUgurvGtLAeePhj3WDSEcIM0p
+oJfSiirF+1IepFAfxqvYB0OjOItXCJhBY1n9soNN7EKA1tav2+EB4crkdLEXHL0C
+pJAUEAeWN+5PUjbHUKOz2kUV5x6DPlUEP7kuE5e1PcKxhiDjpxwGFSoYZRdJ6zXn
+2E6qAInOXr3LEHYXBR2dmuk4/SYP1pyTbErM/MVONclp2sSLEv7765L5eJsgoH6a
+ug5snyXMkjUz16+mchdosLNB32cvHIuROOWqB2089TysIztWAbZtBRDjxLr+PWgK
+6q+1TGLYFOIBIr595OJ3lAY+HQ5WLu49mPH9BVI4uMUrGU7yIMg+tx86USkVmf+x
+sYDiqnaJa6hLSfWFApQ6zPCteEnrFxs5ofIVaKewVLtcVRoA9xM162VEMzU=
 ',
     ),
   ),
@@ -117,9 +167,7 @@ MIIFCDCCAvCgAwIBAgIJAMiNNKOK82bzMA0GCSqGSIb3DQEBCwUAMBkxFzAVBgNV BAMMDmRvY2tlciB
   array (
     'http://macedir.org/entity-category' =>
     array (
-      0 => '
-http://refeds.org/category/research-and-scholarship
-',
+      0 => 'http://refeds.org/category/research-and-scholarship',
     ),
   ),
   'UIInfo' =>
@@ -143,32 +191,16 @@ http://refeds.org/category/research-and-scholarship
     array (
       0 =>
       array (
-        'url' => 'https://welcome.ls-aai.eduteams.local/logo.png',
+        'url' => 'https://proxy.eduteams.local/logo.png',
         'height' => 200,
         'width' => 200,
       ),
       1 =>
       array (
-        'url' => '
-https://welcome.ls-aai.eduteams.local/logo_small.png
-',
+        'url' => 'https://proxy.eduteams.local/logo_small.png',
         'height' => 16,
         'width' => 16,
       ),
     ),
   ),
 );
-
-/*
- * Example SimpleSAMLphp SAML 2.0 SP
- */
-// $metadata['{{ spp_sp_metadata }}'] = array(
-// 	'AssertionConsumerService' => '{{ spp_sp_consumer }}',
-// 	'authproc' => array(
-//    	    /* add the 'urn' prefix to all supported attributes (if available from authentication source) */
-//     	90 => array(
-//       		'class' => 'core:AttributeMap',
-//       		'name2urn'
-//             )
-//     )
-// );

@@ -25,11 +25,11 @@ CONFIG_DIR="$RUN_DIR/config"
 # Start SVS
 docker start -i $CONTAINER_NAME || docker run -it  \
     --name $CONTAINER_NAME \
-	--net eduteams.local \
-	--hostname proxy.eduteams.local \
+    --net eduteams.local \
+    --hostname proxy.eduteams.local \
     --ip 172.128.128.10 \
     --add-host=sp.eduteams.local:172.128.128.11 \
     --add-host=idp.eduteams.local:172.128.128.11 \
-	-e DATA_DIR=/var/eduteams \
-	-w /var/eduteams \
+    -e DATA_DIR=/var/eduteams \
+    -w /var/eduteams \
     $IMAGE_TAG

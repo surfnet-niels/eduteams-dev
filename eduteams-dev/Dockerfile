@@ -21,6 +21,6 @@ COPY ansible/inventory/docker.yml /var/eduteams/TEIP-deploy/inventory/docker.yml
 COPY ansible/group_vars/vars.yml /var/eduteams/TEIP-deploy/group_vars/docker/vars.yml
 RUN cd /var/eduteams/TEIP-deploy && ./docker-deploy.sh
 
-ENTRYPOINT /bin/bash
+#ENTRYPOINT /bin/bash
 #ENTRYPOINT service ssh start && /bin/bash
-#ENTRYPOINT /home/debian/vopaas/bin/docker-run.sh && /bin/bash
+ENTRYPOINT /home/debian/vopaas/bin/docker-run.sh && /bin/bash
